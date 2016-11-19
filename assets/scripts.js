@@ -88,9 +88,8 @@ var uwo_create = function() {
             diff_east = Math.abs(( (180 - b2.getEast()) - (180 - b1.getEast()))/(180 - b1.getEast())),
             diff_north = Math.abs(( (90 - b2.getNorth()) - (90 - b1.getNorth()))/(90 - b1.getNorth())),
             diff_south = Math.abs(( (-90 - b2.getSouth()) - (-90 - b1.getSouth()))/(-90 - b1.getSouth()));
-        console.log(b2.getSouth(), b1.getSouth());
-        console.log(diff_west, diff_east, diff_north, diff_south);
-        if(Math.max(diff_west, diff_east, diff_north, diff_south) >= 1 || !b1.contains(b2)) {
+        // TODO: take zoom level into consideration or make these calculations better
+        if(Math.max(diff_west, diff_east, diff_north, diff_south) >= 2 || !b1.contains(b2)) {
             this.map.flyToBounds(b2);
         }
     };
