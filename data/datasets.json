@@ -191,6 +191,40 @@
             "SE",
             "GB"
         ]
+    },
+    {
+        "name": "North Atlantic Treaty Organization",
+        "url": "nato",
+        "countries": [
+            "BE",
+            "CA",
+            "DK",
+            "FR",
+            "IS",
+            "IT",
+            "LU",
+            "NL",
+            "NO",
+            "PT",
+            "GB",
+            "US",
+            "GR",
+            "TR",
+            "DE",
+            "ES",
+            "CZ",
+            "HU",
+            "PL",
+            "BG",
+            "EE",
+            "LV",
+            "LT",
+            "RO",
+            "SK",
+            "SI",
+            "AL",
+            "HR"
+        ]
     }
 
 ]
