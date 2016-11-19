@@ -6,6 +6,45 @@ var uwo_create = function() {
             var country = geo_json.features[i];
             this.countries[country.properties['ISO2']] = country;
         }
+
+        L.geoJSON(geo_json, {
+            style: function(feature) {
+                if(['RU', 'IN', 'FR', 'CA', 'BR'].indexOf(feature.properties['ISO2']) >= 0) {
+                    return {
+                        color: '#f00',
+                        stroke: false
+                    };
+                }
+                if(['DE', 'ES', 'AU'].indexOf(feature.properties['ISO2']) >= 0) {
+                    return {
+                        color: '#00f',
+                        stroke: false
+                    };
+                }
+                if(['CZ', 'US', 'AR'].indexOf(feature.properties['ISO2']) >= 0) {
+                    return {
+                        color: '#0f0',
+                        stroke: false
+                    };
+                }
+                if(['NL', 'BE', 'LU', 'GB', 'UK'].indexOf(feature.properties['ISO2']) >= 0) {
+                    return {
+                        color: '#ff0',
+                        stroke: false
+                    };
+                }
+                if(['IR', 'PT', 'IT', 'CH', 'PL'].indexOf(feature.properties['ISO2']) >= 0) {
+                    return {
+                        color: '#f0f',
+                        stroke: false
+                    };
+                }
+                return {
+                    color: '#000',
+                    stroke: false
+                };
+            }
+        }).addTo(this.map);
     };
 
     this.load_boundaries = function() {
@@ -34,11 +73,7 @@ var uwo_create = function() {
         // https://switch2osm.org/using-tiles/getting-started-with-leaflet/
 
         this.map = L.map('map_container');
-        var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-        var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib});
-        this.map.setView(new L.LatLng(51.3, 0.7),9);
-        this.map.addLayer(osm);
+        this.map.setView(new L.LatLng(51.3, 0.7), 2);
 
 
         this.load_boundaries();
