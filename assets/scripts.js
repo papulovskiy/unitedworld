@@ -3,12 +3,14 @@ var uwo_create = function() {
     this.geo = null;
     this.countries = {};
     this.features = {};
+    this.labels = {};
 
     this.store_boundaries = function(geo_json) {
         for(var i in geo_json.features) {
             var country = geo_json.features[i];
-            this.countries[country.properties['ISO2']] = country;
-            this.features[country.properties['ISO2']] = L.geoJSON(country, {
+            var id = country.properties['ISO2'];
+            this.countries[id] = country;
+            this.features[id] = L.geoJSON(country, {
                 style: function(feature) {
                     return {
                         color: '#eee',
@@ -16,11 +18,24 @@ var uwo_create = function() {
                     };
                 }
             }).addTo(this.map);
+            // var label = new L.Label()
+            // label.setContent(country.properties.name)
+            // label.setLatLng(this.features[id].getBounds().getCenter())
+            // map.showLabel(label);
+            // console.log(this.features[id].getBounds().getCenter())
+            this.labels[id] = L.marker(this.features[id].getBounds().getCenter(), {
+                icon: L.divIcon({
+                    className: 'text-labels',   // Set class for CSS styling
+                    html: country.properties['NAME']
+                }),
+                draggable: false,       // Allow label dragging...?
+                zIndexOffset: 1000
+            }).addTo(this.map);
         }
 
 
         // this.create_underlying_boundaries(geo_json);
-        this.draw_dataset('eurozone');
+        this.draw_dataset('schengen');
     };
 
     this.create_underlying_boundaries = function(geo_json) {
