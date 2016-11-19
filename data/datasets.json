@@ -136,5 +136,27 @@
             "CH",
             "GB"
         ]
+    },
+    {
+        "name": "International Court of Justice",
+        "url": "international-court-of-justice",
+        "countries": [
+            "FR",
+            "SO",
+            "JP",
+            "SK",
+            "MA",
+            "BR",
+            "GB",
+            "US",
+            "CN",
+            "IT",
+            "UG",
+            "IN",
+            "AU",
+            "RU",
+            "JM"
+        ]
     }
+
 ]
