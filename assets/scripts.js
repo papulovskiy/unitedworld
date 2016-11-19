@@ -34,13 +34,6 @@ var uwo_create = function() {
                 draggable: false,
                 zIndexOffset: 1000
             }).addTo(this.map);
-            var o = this;
-            this.map.on('movestart', function () {
-                o.map.removeLayer(o.labels[id]);
-            });
-            this.map.on('moveend', function () {
-                o.map.addLayer(o.labels[id]);
-            });
         }
     };
 
@@ -153,6 +146,18 @@ var uwo_create = function() {
 
         this.map = L.map('map-container');
         this.map.setView(new L.LatLng(51.3, 0.7), 2);
+
+        var o = this;
+        this.map.on('movestart', function () {
+            for(var id in o.labels) {
+                o.map.removeLayer(o.labels[id]);
+            }
+        });
+        this.map.on('moveend', function () {
+            for(var id in o.labels) {
+                o.map.addLayer(o.labels[id]);
+            }
+        });
 
 
         this.load_boundaries();
