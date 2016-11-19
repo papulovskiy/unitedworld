@@ -30,5 +30,30 @@
             "SI",
             "SK"
         ]
+    },
+    {
+        "name": "Eurozone",
+        "url": "eurozone",
+        "countries": [
+            "AT",
+            "BE",
+            "CY",
+            "DE",
+            "EE",
+            "ES",
+            "FI",
+            "FR",
+            "GR",
+            "IE",
+            "IT",
+            "LT",
+            "LU",
+            "LV",
+            "MT",
+            "NL",
+            "PT",
+            "SI",
+            "SK"
+        ]
     }
 ]
