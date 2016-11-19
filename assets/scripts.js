@@ -134,7 +134,7 @@ var uwo_create = function() {
         var c = document.getElementById('controls-container');
         var list = '';
         console.log(this.datasets);
-        for(var id in this.datasets) {
+        for(var id of Object.keys(this.datasets).sort()) {
             console.debug(id);
             var dataset = this.datasets[id];
             list += '<li><a href="#" data-dataset-id="' + id + '">' + dataset.name + '</a></li>';

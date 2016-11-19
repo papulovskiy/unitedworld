@@ -1,7 +1,7 @@
 [
     {
         "name": "Schengen area",
-        "url": "schengen",
+        "url": "europe-schengen",
         "countries": [
             "AT",
             "BE",
@@ -33,7 +33,7 @@
     },
     {
         "name": "Eurozone",
-        "url": "eurozone",
+        "url": "europe-eurozone",
         "countries": [
             "AT",
             "BE",
@@ -139,7 +139,7 @@
     },
     {
         "name": "International Court of Justice",
-        "url": "international-court-of-justice",
+        "url": "un-international-court-of-justice",
         "countries": [
             "FR",
             "SO",
@@ -160,7 +160,7 @@
     },
     {
         "name": "European Union",
-        "url": "european-union",
+        "url": "europe-european-union",
         "countries": [
             "AT",
             "BE",
