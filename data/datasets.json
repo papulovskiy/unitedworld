@@ -55,5 +55,26 @@
             "SI",
             "SK"
         ]
+    },
+    {
+        "name": "UN Security Council",
+        "url": "un-security-council",
+        "countries": [
+            "CN",
+            "FR",
+            "RU",
+            "GB",
+            "US",
+            "EG",
+            "SN",
+            "AO",
+            "JP",
+            "MY",
+            "UY",
+            "VE",
+            "NZ",
+            "ES",
+            "UA"
+        ]
     }
 ]
