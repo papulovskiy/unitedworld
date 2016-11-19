@@ -18,17 +18,12 @@ var uwo_create = function() {
                     };
                 }
             }).addTo(this.map);
-            // var label = new L.Label()
-            // label.setContent(country.properties.name)
-            // label.setLatLng(this.features[id].getBounds().getCenter())
-            // map.showLabel(label);
-            // console.log(this.features[id].getBounds().getCenter())
-            this.labels[id] = L.marker(this.features[id].getBounds().getCenter(), {
+            this.labels[id] = L.marker([country.properties['LAT'], country.properties['LON']], {
                 icon: L.divIcon({
-                    className: 'text-labels',   // Set class for CSS styling
-                    html: country.properties['NAME']
+                    className: 'country-label',
+                    html: id
                 }),
-                draggable: false,       // Allow label dragging...?
+                draggable: false,
                 zIndexOffset: 1000
             }).addTo(this.map);
         }
