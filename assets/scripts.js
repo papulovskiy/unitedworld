@@ -6,7 +6,7 @@ var uwo_create = function() {
     this.labels = {};
 
     this.store_boundaries = function(geo_json) {
-        for(var i in geo_json.features) {
+        for (var i in geo_json.features) {
             var country = geo_json.features[i];
             var id = country.properties['ISO2'];
             this.countries[id] = country;
@@ -16,7 +16,7 @@ var uwo_create = function() {
     };
 
     this.create_underlying_boundaries = function(geo_json) {
-        for(var id in this.countries) {
+        for (var id in this.countries) {
             var country = this.countries[id];
             this.features[id] = L.geoJSON(country, {
                 style: function(feature) {
@@ -41,7 +41,7 @@ var uwo_create = function() {
     this.store_datasets = function(datasets) {
         this._datasets = datasets;
         this.datasets = {};
-        for(var i in this._datasets) {
+        for (var i in this._datasets) {
             var dataset = this._datasets[i];
             this.datasets[dataset.url] = dataset;
         }
@@ -63,14 +63,14 @@ var uwo_create = function() {
         // TODO: implement existence check
         var dataset = this.datasets[url];
         var enabled = {};
-        for(var i in dataset.countries) {
+        for (var i in dataset.countries) {
             enabled[dataset.countries[i]] = true;
         }
 
         var bounds = L.latLngBounds();
-        for(var country in this.features) {
+        for (var country in this.features) {
             var feature = this.features[country];
-            if(country in enabled) {
+            if (country in enabled) {
                 feature.setStyle(style_enabled);
                 bounds.extend(feature.getBounds());
             } else {
@@ -146,7 +146,7 @@ var uwo_create = function() {
             console.log(e);
             e.preventDefault();
             var url = e.target.getAttribute('data-dataset-id');
-            if(url) {
+            if (url) {
                 o.draw_dataset(url);
             }
         };
@@ -161,13 +161,13 @@ var uwo_create = function() {
         this.map.setView(new L.LatLng(51.3, 0.7), 2);
 
         var o = this;
-        this.map.on('movestart', function () {
-            for(var id in o.labels) {
+        this.map.on('movestart', function() {
+            for (var id in o.labels) {
                 o.map.removeLayer(o.labels[id]);
             }
         });
-        this.map.on('moveend', function () {
-            for(var id in o.labels) {
+        this.map.on('moveend', function() {
+            for (var id in o.labels) {
                 o.map.addLayer(o.labels[id]);
             }
         });
@@ -184,6 +184,5 @@ var uwo_create = function() {
 
 window.onload = function() {
     var uwo = new uwo_create();
-    console.log(uwo);
     uwo.init();
 };
