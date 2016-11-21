@@ -184,8 +184,9 @@ var uwo_create = function() {
             }
         });
 
+        L.tileLayer.mSVG('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {foo: 'bar'}).addTo(this.map);
 
-        this.load_boundaries();
+        // this.load_boundaries();
         this.load_datasets();
     };
 
