@@ -166,27 +166,27 @@ var uwo_create = function() {
 
 
     this.init = function() {
-
-        // https://switch2osm.org/using-tiles/getting-started-with-leaflet/
-
-        this.map = L.map('map-container');
-        this.map.setView(new L.LatLng(51.3, 0.7), 2);
-
-        var o = this;
-        this.map.on('movestart', function() {
-            for (var id in o.labels) {
-                o.map.removeLayer(o.labels[id]);
-            }
+        var map = new ol.Map({
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                }),
+                // vectorLayer
+            ],
+            target: 'map-container',
+            controls: ol.control.defaults({
+                attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+                    collapsible: false
+                })
+            }),
+            view: new ol.View({
+                center: [0, 0],
+                zoom: 2
+            })
         });
-        this.map.on('moveend', function() {
-            for (var id in o.labels) {
-                o.map.addLayer(o.labels[id]);
-            }
-        });
 
-
-        this.load_boundaries();
-        this.load_datasets();
+        // this.load_boundaries();
+        // this.load_datasets();
     };
 
 
