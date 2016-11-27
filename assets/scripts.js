@@ -169,22 +169,28 @@ var uwo_create = function() {
 
         // https://switch2osm.org/using-tiles/getting-started-with-leaflet/
 
-        this.map = L.map('map-container');
+        this.map = L.map('map-container', {
+            inertia: true
+        });
         this.map.setView(new L.LatLng(51.3, 0.7), 2);
 
         var o = this;
         this.map.on('movestart', function() {
-            for (var id in o.labels) {
-                o.map.removeLayer(o.labels[id]);
-            }
+            // for (var id in o.labels) {
+            //     o.map.removeLayer(o.labels[id]);
+            // }
         });
         this.map.on('moveend', function() {
-            for (var id in o.labels) {
-                o.map.addLayer(o.labels[id]);
-            }
+            // for (var id in o.labels) {
+            //     o.map.addLayer(o.labels[id]);
+            // }
         });
 
-        L.tileLayer.mSVG('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {foo: 'bar'}).addTo(this.map);
+        var layer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { opacity: 0.7, zIndex: 1}).addTo(this.map);
+        var svglayer = L.tileLayer.mSVG('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {  }).addTo(this.map);
+        // this.map.on('mousemove', function(e) {
+        //     console.log('External mouse move');
+        // });
 
         // this.load_boundaries();
         this.load_datasets();
