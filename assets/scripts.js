@@ -168,16 +168,16 @@ var uwo_create = function() {
     this.init = function() {
         var style_highlight = new ol.style.Style({
             fill: new ol.style.Fill({
-                color: [0,0,0,0]
+                color: [0, 0, 0, 0]
             }),
             stroke: new ol.style.Stroke({
-                color: [0,0,0,0],
+                color: [0, 0, 0, 0],
                 width: 0
             })
         });
         var style = new ol.style.Style({
             fill: new ol.style.Fill({
-                color: [0,0,0,255]
+                color: [100, 100, 100, 1]
             }),
             stroke: new ol.style.Stroke({
                 color: '#333',
@@ -200,6 +200,14 @@ var uwo_create = function() {
             }),
             style: getStackedStyle
         });
+        var setBlendModeFromSelect = function(evt) {
+            evt.context.globalCompositeOperation = 'color';
+        };
+        var resetBlendModeFromSelect = function(evt) {
+            evt.context.globalCompositeOperation = 'source-over';
+        };
+        vectorLayer.on('precompose', setBlendModeFromSelect);
+        vectorLayer.on('postcompose', resetBlendModeFromSelect);
 
         var map = new ol.Map({
             layers: [
