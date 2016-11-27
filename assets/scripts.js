@@ -216,7 +216,12 @@ var uwo_create = function() {
                         layer: 'watercolor'
                     })
                 }),
-                vectorLayer
+                vectorLayer,
+                new ol.layer.Tile({
+                    source: new ol.source.Stamen({
+                        layer: 'terrain-labels'
+                    })
+                })
             ],
             target: 'map-container',
             controls: ol.control.defaults({
