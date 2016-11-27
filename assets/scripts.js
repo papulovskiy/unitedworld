@@ -179,6 +179,10 @@ var uwo_create = function() {
         var t3 = t1 * t1 * t1;
         var twoPi = 2 * Math.PI;
 
+        function should_be_transformed(lng, lat) {
+            return true;
+        }
+
 
         /**
          * Convert an RGB pixel into an HCL pixel.
@@ -265,6 +269,13 @@ var uwo_create = function() {
                 layer: 'watercolor'
             })],
             operation: function(pixels, data) {
+                if (!this.example_counter) {
+                    this.example_counter = 1;
+                }
+                if (this.example_counter < 100) {
+                    console.log(pixels, data);
+                    this.example_counter += 1;
+                }
                 var hcl = rgb2hcl(pixels[0]);
 
                 var h = hcl[0] + Math.PI * data.hue / 180;
@@ -295,12 +306,17 @@ var uwo_create = function() {
                 t2: t2,
                 t3: t3,
                 twoPi: twoPi
-            }
+            },
+            operationType: 'pixel'
+            // threads: 0
         });
+
         var controls = {};
 
         raster.on('beforeoperations', function(event) {
+            console.log(event);
             var data = event.data;
+            // data.e = event;
             for (var id in controls) {
                 data[id] = Number(controls[id].value);
             }
